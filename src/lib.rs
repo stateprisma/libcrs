@@ -1,15 +1,9 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
+#![no_std]
+
+mod ximpl;
+mod errno;
+
+#[no_mangle]
+pub extern "C" fn write(fildes: i32, buf: *const u8, nbyte: usize) {
+    ximpl::write_family::__write(fildes, buf, nbyte);
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
-}
-
