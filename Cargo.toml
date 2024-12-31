@@ -3,4 +3,21 @@ name = "libcrs"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+crate-type = ["rlib"]
+
 [dependencies]
+
+windows-sys = { version = "0.59", features = [
+    "Win32_Foundation",
+    "Win32_Storage_FileSystem",
+    "Win32_System",
+    "Win32_System_IO"
+] }
+nix = { version = "0.29" }
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
